@@ -4,7 +4,10 @@ const notes = [{
     title:'Note 2',
     body: 'Testing 2'}, {
     title: 'Note 3',
-    body: 'Testing 3'}];
+    body: 'Testing 3'},
+    {
+      title: 'Nope',
+      body: 'Testing 4'}];
 
 console.log(notes)
 console.log(notes.length)
@@ -22,7 +25,7 @@ console.log(index)
 //   const index = notes.findIndex(function(note,index){
 //   return note.title.toLowerCase() === noteTitle.toLowerCase() 
 //   });
-const findNotes = function(notes, noteTitle){
+const findNote = function(notes, noteTitle){
   const note = notes.find(function(note,index){
      return note.title.toLowerCase() === noteTitle.toLowerCase() 
   });
@@ -34,3 +37,16 @@ const findNotes = function(notes, noteTitle){
 // console.log(findNotes(notes,'NOte 1'))
 // console.log(findNotes(notes,'NotE 2'))
 
+let filtered = notes.filter((note, index)=> note.title.includes('Note '));
+
+console.log(filtered)
+
+const findNotes = (notes,query) => {
+  return notes.filter((note,index) => {
+    const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase());
+    const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase());
+    return isTitleMatch || isBodyMatch
+  })
+}
+
+console.log(findNotes(notes,'Note 3'))
