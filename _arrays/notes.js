@@ -1,13 +1,13 @@
 const notes = [{
-    title:'Note 1',
-    body: 'Testing 1'}, {
-    title:'Note 2',
-    body: 'Testing 2'}, {
-    title: 'Note 3',
-    body: 'Testing 3'},
-    {
-      title: 'Nope',
-      body: 'Testing 4'}];
+  title:'Note 1',
+  body: 'This is a note that is for the demonstration'}, {
+  title:'Note 2',
+  body: 'Parting is such sweet sorrow'}, {
+  title: 'Note 3',
+  body: 'Wakanda Forever'},
+  {
+    title: 'Nope',
+    body: 'Lets get it started'}];
 
 console.log(notes)
 console.log(notes.length)
