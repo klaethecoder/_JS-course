@@ -20,6 +20,16 @@ ps.forEach(function(el){
     el.remove()
 });
 
+function createNewNote(){
 let newP = document.createElement('p')
-newP.textContent = "This is a new paragraph element from JS."
+let input = document.querySelector("#input")
+
+newP.textContent = input.value
+input.value = ""
 document.body.appendChild(newP)
+
+}
+
+let createButton = document.querySelector('#create')
+
+createButton.addEventListener('click', createNewNote)
