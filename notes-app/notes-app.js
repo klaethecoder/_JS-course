@@ -20,6 +20,9 @@ ps.forEach(function(el){
     el.remove()
 });
 
+let input = document.querySelector("#input")
+input.addEventListener('press')
+
 function createNewNote(){
 let newP = document.createElement('p')
 let input = document.querySelector("#input")
