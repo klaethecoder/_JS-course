@@ -17,12 +17,24 @@ function createEl(el){
 }
 
 // Allows uer to add todos to the screen that haven't yet been completed. 
+
+
 function addTodo(arr){
+    // Gets a filtered list of todos from the array
     let filtered = arr.filter(todo => todo.completed === false)
+
+    // Creates a new element and appends it before all the hard coded todos on the page
+    let h4 = createEl('h4')
+    h4.textContent = `You have ${filtered.length} todos left`
+    document.body.querySelector('h1').append(h4)
+
+    // Takes filtered list and creates elements and appends them to the page after hard coded todos
     filtered.forEach(function(todo){
         let p = createEl('p');
         p.textContent = todo.text
         document.body.appendChild(p)
+
+        // Logs a message letting the dev know that it was successfully created and appended
         console.log('An element was successfully created and appended')
     })
 }
