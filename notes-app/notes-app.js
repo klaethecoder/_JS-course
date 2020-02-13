@@ -21,7 +21,11 @@ ps.forEach(function(el){
 });
 
 let input = document.querySelector("#input")
-input.addEventListener('press')
+
+// Adds an Event Listener to the input so that if a user presses enter instead of clicking the button than it will create the note. 
+input.addEventListener('keypress',function(e){
+    e.code == 'Enter' ? createNewNote() : e
+})
 
 function createNewNote(){
 let newP = document.createElement('p')
