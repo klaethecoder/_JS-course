@@ -23,6 +23,7 @@ function addTodo(arr){
     // Gets a filtered list of todos from the array
     let filtered = arr.filter(todo => todo.completed === false)
 
+
     // Creates a new element and appends it before all the hard coded todos on the page
     let h4 = createEl('h4')
     h4.textContent = `You have ${filtered.length} todos left`
@@ -36,6 +37,21 @@ function addTodo(arr){
 
         // Logs a message letting the dev know that it was successfully created and appended
         console.log('An element was successfully created and appended')
+    })
+    function enter(){
+        let data = input.value
+        let p = createEl('p');
+        p.textContent = data
+        document.body.appendChild(p)
+        input.value = ""
+    }
+
+    let button = document.querySelector("#add")
+    let input = document.querySelector("#text")
+    button.addEventListener('click', enter)
+    input/addEventListener("keypress",function(e){
+        console.log(e.keyCode)
+        e.keyCode == 13 ? enter() : e
     })
 }
 
