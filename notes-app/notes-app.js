@@ -38,5 +38,11 @@ document.body.appendChild(newP)
 }
 
 let createButton = document.querySelector('#create')
+let deleteButton = document.querySelector('#delete')
 
 createButton.addEventListener('click', createNewNote)
+deleteButton.addEventListener('click', function(){
+    document.querySelectorAll('p').forEach(function(note){
+        note.remove();
+    })
+})
