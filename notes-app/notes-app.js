@@ -1,13 +1,17 @@
 const notes = [{
-    title:'Note 1',
+    title:'Note 1: I got this',
     body: 'This is a note that is for the demonstration'}, {
-    title:'Note 2',
+    title:'Note 2: Actually, IDK if I do',
     body: 'Parting is such sweet sorrow'}, {
-    title: 'Note 3',
+    title: 'Note 3: What just happened?',
     body: 'Wakanda Forever'},
     {
       title: 'Nope',
       body: 'Lets get it started'}];
+
+      const filters = {
+          searchText: ''
+      }
 
 console.log('This is from an external doc.')
 
@@ -33,7 +37,7 @@ let input = document.querySelector("#input")
 
 newP.textContent = input.value
 input.value = ""
-document.body.appendChild(newP)
+document.querySelector("#notes").appendChild(newP)
 
 }
 
@@ -45,4 +49,15 @@ deleteButton.addEventListener('click', function(){
     document.querySelectorAll('p').forEach(function(note){
         note.remove();
     })
+})
+
+const renderNotes = function(notes, filters){
+    let filteredNotes = notes.filter(function(note){ return note.title.toLowerCase().includes(filters.searchText.toLowerCase())})
+    console.log(filteredNotes)
+}
+renderNotes(notes,filters)
+
+input.addEventListener('input', function(e){
+    filters.searchText = e.target.value
+    renderNotes(notes,filters)
 })
