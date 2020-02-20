@@ -49,7 +49,7 @@ function addTodo(arr){
     let button = document.querySelector("#add")
     let input = document.querySelector("#text")
     button.addEventListener('click', enter)
-    input/addEventListener("keypress",function(e){
+    input.addEventListener("keypress",function(e){
         console.log(e.keyCode)
         e.keyCode == 13 ? enter() : e
     })
