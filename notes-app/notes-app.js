@@ -29,6 +29,7 @@ let input = document.querySelector("#input")
 // Adds an Event Listener to the input so that if a user presses enter instead of clicking the button than it will create the note. 
 input.addEventListener('keypress',function(e){
     e.code == 'Enter' ? createNewNote() : e
+    input.value == '' ? renderNotes(notes,filters) : input
 })
 
 function createNewNote(){
@@ -36,9 +37,10 @@ let newP = document.createElement('p')
 let input = document.querySelector("#input")
 
 newP.textContent = input.value
+notes.push({title: `Note ${notes.length}`, body:input.value})
 input.value = ""
 document.querySelector("#notes").appendChild(newP)
-
+renderNotes(notes,filters)
 }
 
 let createButton = document.querySelector('#create')
@@ -53,7 +55,13 @@ deleteButton.addEventListener('click', function(){
 
 const renderNotes = function(notes, filters){
     let filteredNotes = notes.filter(function(note){ return note.title.toLowerCase().includes(filters.searchText.toLowerCase())})
-    console.log(filteredNotes)
+    document.querySelector("#notes").innerHTML = ''
+
+    filteredNotes.forEach(function(note){
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector("#notes").appendChild(noteEl)
+    })
 }
 renderNotes(notes,filters)
 
@@ -61,3 +69,5 @@ input.addEventListener('input', function(e){
     filters.searchText = e.target.value
     renderNotes(notes,filters)
 })
+
+document.querySelector("#notes").addEventListener('input', renderNotes(notes,filters))

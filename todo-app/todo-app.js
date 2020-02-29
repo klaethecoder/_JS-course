@@ -2,6 +2,10 @@ const todos = [{text:"Wash the car", completed: true}, {text:'Take out the trash
 {text:'Buy Groceries', completed: false}, 
 {text:'Do homework', completed: true}];
 
+const filters = {
+    searchText: ""
+}
+
 // let ps = document.querySelectorAll('p')
 // ps.forEach(function(el){
 //     el.textContent.includes('the') ? el.remove() : el
@@ -50,10 +54,29 @@ function addTodo(arr){
     let input = document.querySelector("#text")
     button.addEventListener('click', enter)
     input.addEventListener("keypress",function(e){
-        console.log(e.keyCode)
         e.keyCode == 13 ? enter() : e
     })
 }
 
 // Puts the todos on the screen that haven't been created yet.
 addTodo(todos)
+
+let div = document.querySelector("#todos")
+let input = document.querySelector("#text")
+input.addEventListener('input', function(){
+    
+})
+
+const renderTodos = function(todos, filters){
+    let filteredTodos = todos.filter(function(todo){ return todo.completed == false})
+    document.querySelector("#todos").innerHTML = ''
+
+    filteredTodos.forEach(function(todo){
+        const todoEl = document.createElement('p')
+        todoEl.textContent = ''
+        document.querySelector("#todos").appendChild(todoEl)
+    })
+}
+
+
+
